@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Event Nexus</title>
+    <link rel="icon" href="https://github.com/pushkar-0553/final_Year_Porject/blob/main/Event%20(4).png?raw=true" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      body{
+        background-color: rgb(208, 255, 254);
+        background-image: url("https://github.com/pushkar-0553/final_Year_Porject/blob/main/Event%20nexus%20bg.png?raw=true");
+      }
+        .m_nav{
+            height: 140px;
+            background-color: rgb(208, 250, 236);
+            opacity: 80%;
+            display: flex;
+
+        }
+        .logo{
+          width:20%;
+          height:100px;
+          margin: 20px;
+          border-radius: 10px;
+        }     
+        .sub_nav{
+          height: 80px;
+          width: 50%;
+          background-color: aliceblue;
+          border-radius: 20px;
+          display: flex;
+          margin: 30px;
+          margin-left: 70px;
+        }
+        .sub_nav button{
+          width: auto;
+          height: 60px;
+        padding: 10px;
+          border-radius: 10px;
+          margin: 10px;
+          margin-left: 50px;
+          color: rgb(7, 105, 127);
+          background-color: rgb(231, 255, 247);
+          border: none;
+          font-size: 25px;
+        }
+        .sub_nav button:hover{
+          color: rgb(21, 56, 64);
+          background-color: rgb(208, 250, 236);
+          border: 1px solid black;
+          transition: all 0.3s;
+        
+        }
+        .btn {
+          line-height: 50px;
+          height: 75px;
+          /* Remove fixed width */
+          width: 150px; /* Let width adjust based on content */
+          cursor: pointer;
+          font-size: 20px;
+          margin-top: 30px;
+          margin-left: 120px;
+          border-radius: 10px;
+          text-decoration: none;
+        }
+        
+        .btn-one {
+          color: rgb(37, 105, 133);
+          transition: all 0.3s;
+          position: relative;
+          font-size: 20px;
+          display: flex;
+          text-align: center;
+          padding: 10px 20px; /* Add padding for consistency */
+          width: 150px; /* Auto width for text-based adjustment */
+          text-decoration: none;
+        }
+        .btn-one span {
+          transition: all 0.3s;
+          text-decoration: none;
+          
+          
+        }
+        .btn-one::before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          opacity: 0;
+          transition: all 0.3s;
+          border-top-width: 1px;
+          border-bottom-width: 1px;
+          border-top-style: solid;
+          border-bottom-style: solid;
+          border-top-color: rgba(5, 63, 77, 0.5);
+          border-bottom-color: rgba(5, 63, 77, 0.5);
+          transform: scale(0.1, 1);
+          text-decoration: none;
+        }
+        .btn-one:hover span {
+          letter-spacing: 2px;
+        }
+        .btn-one:hover::before {
+          opacity: 1; 
+          transform: scale(1, 1); 
+        }
+        .btn-one::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          transition: all 0.3s;
+          background-color: rgba(255,255,255,0.1);
+        }
+        .btn-one:hover::after {
+          opacity: 0; 
+          transform: scale(0.1, 1);
+        }
+        .login_pic{
+          width: 30px;
+          height: auto;
+          display: flex;
+          margin-left: 10px;
+          margin-top: 10px;
+        }
+        a{
+          text-decoration: none;
+        }
+.main{
+  display: flex;
+}
+        #arc1{
+           margin: 20px;
+           width: 50%;
+           height: 50%;
+           background-color: rgb(189, 255, 255);
+          
+           border-radius: 10px;
+           background-color: rgba(177, 229, 236, 0.8);
+           border: 1px solid black;
+          
+        }
+        #arc2{
+          margin: 20px;
+           width: 50%;
+           height: 50%;
+           background-color: rgb(189, 255, 255);
+          
+           border-radius: 10px;
+           background-color: rgba(177, 229, 236, 0.8);
+           border: 1px solid black;
+        }
+		.speech-button img {
+		     width: 50px; /* You can change the size here */
+		     cursor: pointer;
+		     margin-top: 20px;
+		   }
+    </style>
+  </head>
+  <body>
+    <nav class="m_nav">
+           <img  class="logo" src="https://github.com/pushkar-0553/final_Year_Porject/blob/main/Event%20(2).png?raw=true">
+           <div class="sub_nav">
+                   <a href="/index"><button>Home</button></a>
+                   <a><button>All Events</button></a>
+                   <a><button>Articles</button></a>
+                   <a><button>Gallery</button></a>
+                   
+           </div>
+           <a href="/login"><button class="btn btn-one"><span>Login</span><img class="login_pic" src="https://github.com/pushkar-0553/final_Year_Porject/blob/main/login.png?raw=true"></button></a>
+    </nav>
+    <div class="main">
+    <div th:if="${articles.size() > 0}" id="arc1">
+
+<h1>Article 1</h1>
+<ul>
+            <li th:with="article=${articles[0]}">
+                <h3 th:text="${article.title}"></h3>
+                <p>By: <span th:text="${article.author}"></span> | Published on: <span th:text="${article.datePublished}"></span></p>
+                <p id="article1-content" th:text="${article.content}"></p>
+            </li>
+        </ul>
+		<div class="speech-button">
+		        <img src="https://icon-library.com/images/sound-icon-png/sound-icon-png-8.jpg" 
+		             alt="Speak Article 1" 
+		             onclick="readArticle('article1-content')" 
+		             title="Click to read article">
+		      </div>
+
+		      
+    </div>
+    <div th:if="${articles.size() >1}" id="arc2">
+<h1>Article 2</h1>
+<ul>
+            <li th:with="article=${articles[1]}">
+                <h3 th:text="${article.title}"></h3>
+                <p>By: <span th:text="${article.author}"></span> | Published on: <span th:text="${article.datePublished}"></span></p>
+                <p id="article2-content" th:text="${article.content}"></p>
+            </li>
+        </ul>
+		<div class="speech-button">
+				        <img src="https://icon-library.com/images/sound-icon-png/sound-icon-png-8.jpg" 
+				             alt="Speak Article 2" 
+				             onclick="readArticle('article2-content')" 
+				             title="Click to read article">
+				      </div>   </div>	
+    </div>
+	<script>
+		// Function to split text into smaller chunks
+		function splitText(text, chunkSize) {
+		    let chunks = [];
+		    for (let i = 0; i < text.length; i += chunkSize) {
+		        chunks.push(text.slice(i, i + chunkSize));
+		    }
+		    return chunks;
+		}
+
+		// Function to read article with text chunking
+		function readArticle(articleId) {
+		    // Cancel any ongoing speech
+		    window.speechSynthesis.cancel();
+
+		    // Get the article content
+		    var articleText = document.getElementById(articleId).innerText;
+
+		    // Split the text into smaller chunks (e.g., 200 characters per chunk)
+		    var textChunks = splitText(articleText, 200);
+
+		    // Function to read a single chunk
+		    function speakChunk(chunkIndex) {
+		        if (chunkIndex >= textChunks.length) {
+		            // End of chunks
+		            return;
+		        }
+
+		        // Create a new SpeechSynthesisUtterance instance for each chunk
+		        var speech = new SpeechSynthesisUtterance();
+		        speech.text = textChunks[chunkIndex];
+		        speech.rate = 1; // Speed of the voice
+		        speech.pitch = 1; // Pitch of the voice
+		        speech.volume = 1; // Volume of the voice
+
+		        // Ensure voices are loaded properly before speaking
+		        speechSynthesis.onvoiceschanged = function() {
+		            var voices = speechSynthesis.getVoices();
+		            speech.voice = voices[0]; // Select the first voice (you can customize this)
+		        };
+
+		        // Speak the chunk
+		        window.speechSynthesis.speak(speech);
+
+		        // Handle when the current chunk ends, and then move to the next one
+		        speech.onend = function() {
+		            speakChunk(chunkIndex + 1); // Speak the next chunk
+		        };
+
+		        // Handle any potential errors
+		        speech.onerror = function(event) {
+		            console.error('SpeechSynthesis error: ', event.error);
+		        };
+		    }
+
+		    // Start reading the first chunk
+		    speakChunk(0);
+		}
+
+
+	</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
